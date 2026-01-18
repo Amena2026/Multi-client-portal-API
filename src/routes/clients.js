@@ -1,18 +1,11 @@
-const express = require('express')
-const router = express.Router()
-const supabase = require('../config/supabase')
+const express = require('express');
+const router = express.Router();
+const clientController = require('../controllers/clientController');
 
-router.get('/', async (req, res) => {
-  try {
-    const { data, error } = await supabase
-      .from('clients')
-      .select('*');
-    
-    if (error) throw error;
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+router.get('/', clientController.getAll);
+router.get('/:id', clientController.getOne);
+router.post('/', clientController.create);
+router.patch('/:id', clientController.update);
+router.delete('/:id', clientController.remove);
 
-module.exports = router
+module.exports = router;
