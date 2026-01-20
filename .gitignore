@@ -2,5 +2,7 @@ node_modules/
 .env
 .DS_Store
 *.log
-
+.claude/
+.vscode/
+.mcp.json
 README.md

@@ -8,4 +8,4 @@ router.post('/', clientController.create);
 router.patch('/:id', clientController.update);
 router.delete('/:id', clientController.remove);
 
-module.exports = router;
+module.exports = router
