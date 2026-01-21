@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 // API Routes (uncomment as you create them)
 app.use('/api/clients', require('./routes/clients'));
 app.use('/api/projects', require('./routes/projects'));
-// app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/tasks', require('./routes/tasks'));
 
 // 404 handler
 app.use((req, res) => {
