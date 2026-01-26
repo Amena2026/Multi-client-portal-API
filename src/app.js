@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const logger = require('./utils/logger')
+const middleware = require('./utils/middleware')
 require('dotenv').config();
 
 const app = express();
@@ -7,12 +9,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-// Request logging middleware
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
+app.use(middleware.requestLogger)
 
 // Health check route
 app.get('/', (req, res) => {
@@ -28,13 +25,11 @@ app.use('/api/projects', require('./routes/projects'));
 app.use('/api/tasks', require('./routes/tasks'));
 
 // 404 handler
-app.use((req, res) => {
-  res.status(404).json({ error: 'Route not found' });
-});
+app.use(middleware.unknownEndpoint)
 
 // Error handler (should be last)
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  logger.error(err.stack)
   res.status(500).json({ 
     error: 'Something went wrong!',
     message: err.message 
