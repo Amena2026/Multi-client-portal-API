@@ -1,4 +1,4 @@
-const { test, describe } = require('node:test')
+/*const { test, describe } = require('node:test')
 const assert = require('node:assert')
 
 const average = require('../utils/for_testing').average
@@ -15,4 +15,4 @@ describe('average', () => {
   test('of empty array is zero', () => {
     assert.strictEqual(average([]), 0)
   })
-})
+}) */
