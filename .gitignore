@@ -5,5 +5,4 @@ node_modules/
 .claude/
 .vscode/
 .mcp.json
-README.md
 Authentication_GUIDE.md
